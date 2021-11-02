@@ -30,6 +30,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Set;
 
 public class CreateForumFragment extends Fragment {
 
@@ -82,7 +83,7 @@ public class CreateForumFragment extends Fragment {
                             content,
                             new SimpleDateFormat("MM/dd/yyyy hh:mmaa").format(new Date()),
                             mAuth.getUid()
-                    }, new List<String>() {
+                    }, new Set<String>() {
                         @Override
                         public int size() {
                             return 0;
@@ -137,7 +138,7 @@ public class CreateForumFragment extends Fragment {
                         }
 
                         @Override
-                        public boolean addAll(int i, @NonNull Collection<? extends String> collection) {
+                        public boolean retainAll(@NonNull Collection<?> collection) {
                             return false;
                         }
 
@@ -147,71 +148,8 @@ public class CreateForumFragment extends Fragment {
                         }
 
                         @Override
-                        public boolean retainAll(@NonNull Collection<?> collection) {
-                            return false;
-                        }
-
-                        @Override
                         public void clear() {
 
-                        }
-
-                        @Override
-                        public boolean equals(@Nullable Object o) {
-                            return false;
-                        }
-
-                        @Override
-                        public int hashCode() {
-                            return 0;
-                        }
-
-                        @Override
-                        public String get(int i) {
-                            return null;
-                        }
-
-                        @Override
-                        public String set(int i, String s) {
-                            return null;
-                        }
-
-                        @Override
-                        public void add(int i, String s) {
-
-                        }
-
-                        @Override
-                        public String remove(int i) {
-                            return null;
-                        }
-
-                        @Override
-                        public int indexOf(@Nullable Object o) {
-                            return 0;
-                        }
-
-                        @Override
-                        public int lastIndexOf(@Nullable Object o) {
-                            return 0;
-                        }
-
-                        @NonNull
-                        @Override
-                        public ListIterator<String> listIterator() {
-                            return null;
-                        }
-
-                        @NonNull
-                        @Override
-                        public ListIterator<String> listIterator(int i) {
-                            return null;
-                        }
-
-                        @NonNull
-                        @Override
-                        public List<String> subList(int i, int i1) {
-                            return null;
                         }
                     });
                     db.collection("forums").add(forum);

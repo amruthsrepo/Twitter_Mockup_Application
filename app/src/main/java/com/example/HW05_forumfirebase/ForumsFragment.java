@@ -29,6 +29,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ForumsFragment extends Fragment {
 
@@ -76,7 +77,7 @@ public class ForumsFragment extends Fragment {
                                             doc.getString("time"),
                                             doc.getString("uid"),
                                             doc.getId()}
-                            , (List<String>) doc.get("likes")));
+                            , (Set<String>) doc.get("likes")));
                         }
                         adapter.forumsList = forumsList;
                         adapter.notifyDataSetChanged();
