@@ -87,9 +87,9 @@ public class RecyclerViewForumsAdapter extends RecyclerView.Adapter<RecyclerView
 
         if (forum.getLikes().contains(mAuth.getCurrentUser().getUid())) {
             holder.likeButton.setImageResource(R.drawable.like_favorite);
-            holder.likeButton.setTooltipText("NL");
-        } else {
             holder.likeButton.setTooltipText("L");
+        } else {
+            holder.likeButton.setTooltipText("NL");
         }
 
         holder.likeButton.setOnClickListener(new View.OnClickListener() {
