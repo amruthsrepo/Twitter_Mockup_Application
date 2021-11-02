@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.ListIterator;
 
 public class POJOclasses {
 
@@ -26,9 +26,9 @@ public class POJOclasses {
         String time;
         String Uid;
         String docId;
-        Set<String> likes;
+        List<String> likes;
 
-        public Forum(String[] contents, Set<String> likes) {
+        public Forum(String[] contents, List<String> likes) {
             this.userName = contents[0];
             this.title = contents[1];
             this.content = contents[2];
@@ -105,9 +105,9 @@ public class POJOclasses {
             this.docId = docId;
         }
 
-        public Set<String> getLikes() {
+        public List<String> getLikes() {
             if (likes == null) {
-                likes = new Set<String>() {
+                likes = new List<String>() {
                     @Override
                     public int size() {
                         return 0;
@@ -162,7 +162,7 @@ public class POJOclasses {
                     }
 
                     @Override
-                    public boolean retainAll(@NonNull Collection<?> collection) {
+                    public boolean addAll(int i, @NonNull Collection<? extends String> collection) {
                         return false;
                     }
 
@@ -172,15 +172,68 @@ public class POJOclasses {
                     }
 
                     @Override
+                    public boolean retainAll(@NonNull Collection<?> collection) {
+                        return false;
+                    }
+
+                    @Override
                     public void clear() {
 
+                    }
+
+                    @Override
+                    public String get(int i) {
+                        return null;
+                    }
+
+                    @Override
+                    public String set(int i, String s) {
+                        return null;
+                    }
+
+                    @Override
+                    public void add(int i, String s) {
+
+                    }
+
+                    @Override
+                    public String remove(int i) {
+                        return null;
+                    }
+
+                    @Override
+                    public int indexOf(@Nullable Object o) {
+                        return 0;
+                    }
+
+                    @Override
+                    public int lastIndexOf(@Nullable Object o) {
+                        return 0;
+                    }
+
+                    @NonNull
+                    @Override
+                    public ListIterator<String> listIterator() {
+                        return null;
+                    }
+
+                    @NonNull
+                    @Override
+                    public ListIterator<String> listIterator(int i) {
+                        return null;
+                    }
+
+                    @NonNull
+                    @Override
+                    public List<String> subList(int i, int i1) {
+                        return null;
                     }
                 };
             }
             return likes;
         }
 
-        public void setLikes(Set<String> likes) {
+        public void setLikes(List<String> likes) {
             this.likes = likes;
         }
     }

@@ -77,7 +77,7 @@ public class ForumsFragment extends Fragment {
                                             doc.getString("time"),
                                             doc.getString("uid"),
                                             doc.getId()}
-                            , (Set<String>) doc.get("likes")));
+                            , (List<String>) doc.get("likes")));
                         }
                         adapter.forumsList = forumsList;
                         adapter.notifyDataSetChanged();

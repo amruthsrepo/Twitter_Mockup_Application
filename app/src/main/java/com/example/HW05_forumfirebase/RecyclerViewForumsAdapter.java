@@ -85,7 +85,7 @@ public class RecyclerViewForumsAdapter extends RecyclerView.Adapter<RecyclerView
             holder.deleteButton.setVisibility(View.INVISIBLE);
         }
 
-        if (forum.likes.contains(mAuth.getCurrentUser().getUid())) {
+        if (forum.getLikes().contains(mAuth.getCurrentUser().getUid())) {
             holder.likeButton.setImageResource(R.drawable.like_favorite);
             holder.likeButton.setTooltipText("NL");
         } else {
