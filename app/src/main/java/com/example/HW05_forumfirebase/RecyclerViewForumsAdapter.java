@@ -99,13 +99,15 @@ public class RecyclerViewForumsAdapter extends RecyclerView.Adapter<RecyclerView
                     holder.likeButton.setImageResource(R.drawable.like_not_favorite);
                     holder.likeButton.setTooltipText("NL");
                     forum.likes.add(mAuth.getCurrentUser().getUid());
+                    db.collection("forums").document(forum.docId)
+                            .set(forum);
                 } else {
                     holder.likeButton.setImageResource(R.drawable.like_favorite);
                     holder.likeButton.setTooltipText("L");
                     forum.likes.remove(mAuth.getCurrentUser().getUid());
+                    db.collection("forums").document(forum.docId)
+                            .set(forum);
                 }
-                db.collection("forums").document(forum.docId)
-                        .set(forum);
             }
         });
     }
