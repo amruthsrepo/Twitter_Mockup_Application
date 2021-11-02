@@ -9,6 +9,7 @@ package com.example.HW05_forumfirebase;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inclass08_forumfirebase.R;
@@ -44,6 +46,7 @@ public class RecyclerViewForumsAdapter extends RecyclerView.Adapter<RecyclerView
         return postsViewHolder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull PostsViewHolder holder, int position) {
         POJOclasses.Forum forum = forumsList.get(position);
@@ -81,6 +84,30 @@ public class RecyclerViewForumsAdapter extends RecyclerView.Adapter<RecyclerView
         } else {
             holder.deleteButton.setVisibility(View.INVISIBLE);
         }
+
+        if (forum.likes.contains(mAuth.getCurrentUser().getUid())) {
+            holder.likeButton.setImageResource(R.drawable.like_favorite);
+            holder.likeButton.setTooltipText("NL");
+        } else {
+            holder.likeButton.setTooltipText("L");
+        }
+
+        holder.likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view.getTooltipText().equals("L")) {
+                    holder.likeButton.setImageResource(R.drawable.like_not_favorite);
+                    holder.likeButton.setTooltipText("NL");
+                    forum.likes.add(mAuth.getCurrentUser().getUid());
+                } else {
+                    holder.likeButton.setImageResource(R.drawable.like_favorite);
+                    holder.likeButton.setTooltipText("L");
+                    forum.likes.remove(mAuth.getCurrentUser().getUid());
+                }
+                db.collection("forums").document(forum.docId)
+                        .set(forum);
+            }
+        });
     }
 
     @Override
@@ -90,14 +117,15 @@ public class RecyclerViewForumsAdapter extends RecyclerView.Adapter<RecyclerView
 
     public static class PostsViewHolder extends RecyclerView.ViewHolder {
         TextView title, userName, content, time;
-        ImageButton deleteButton;
+        ImageButton deleteButton, likeButton;
         public PostsViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.textView_ForumTitle);
             userName = itemView.findViewById(R.id.textView_ForumContentCreator);
             time = itemView.findViewById(R.id.textView_ForumContentDate);
             content = itemView.findViewById(R.id.textView_ForumContentDescription);
-            deleteButton = itemView.findViewById(R.id.imageButton_Like);
+            deleteButton = itemView.findViewById(R.id.imageButton_Delete);
+            likeButton = itemView.findViewById(R.id.imageButton_Like);
         }
     }
 }
