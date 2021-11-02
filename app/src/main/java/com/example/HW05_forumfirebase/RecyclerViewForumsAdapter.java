@@ -98,11 +98,11 @@ public class RecyclerViewForumsAdapter extends RecyclerView.Adapter<RecyclerView
                 if (view.getTooltipText().equals("L")) {
                     holder.likeButton.setImageResource(R.drawable.like_not_favorite);
                     holder.likeButton.setTooltipText("NL");
-                    forum.getLikes().add(mAuth.getCurrentUser().getUid());
+                    forum.likes.add(mAuth.getCurrentUser().getUid());
                 } else {
                     holder.likeButton.setImageResource(R.drawable.like_favorite);
                     holder.likeButton.setTooltipText("L");
-                    forum.getLikes().remove(mAuth.getCurrentUser().getUid());
+                    forum.likes.remove(mAuth.getCurrentUser().getUid());
                 }
                 db.collection("forums").document(forum.docId)
                         .set(forum);
