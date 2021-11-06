@@ -62,24 +62,25 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_ForumContentDescription_SingleForumFragment" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editText_NewComment_SingleForumFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="Write Comment"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_post_SingleForumFragment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintTop_toTopOf="@+id/button_post_SingleForumFragment" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_post_SingleForumFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Button"
+        android:text="Post"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_CommentsCount_SingleFourmFragment" />
 
@@ -91,5 +92,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/button_post_SingleForumFragment" />
 </androidx.constraintlayout.widget.ConstraintLayout>
