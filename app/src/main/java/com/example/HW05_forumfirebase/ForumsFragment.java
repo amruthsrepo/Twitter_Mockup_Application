@@ -29,6 +29,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class ForumsFragment extends Fragment {
@@ -56,7 +57,7 @@ public class ForumsFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentForumsBinding.inflate(inflater,container,false);
 
-        adapter = new RecyclerViewForumsAdapter(forumsList);
+        adapter = new RecyclerViewForumsAdapter(forumsList, this);
         layoutManager = new LinearLayoutManager(getContext());
 
         binding.recyclerViewForumsList.setHasFixedSize(true);
@@ -77,7 +78,7 @@ public class ForumsFragment extends Fragment {
                                             doc.getString("time"),
                                             doc.getString("uid"),
                                             doc.getId()}
-                            , (List<String>) doc.get("likes")));
+                            , (List<String>) doc.get("likes"), (List<Map<String, String>>) doc.get("comments")));
                         }
                         adapter.forumsList = forumsList;
                         adapter.notifyDataSetChanged();
@@ -110,8 +111,13 @@ public class ForumsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
         getActivity().setTitle(getString(R.string.Forums));
-
     }
+
+    public void openForumDetails(POJOclasses.Forum forum) {
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.main_ContainerView, new SingleForumFragment(forum))
+                .commit();
+    }
+
 }

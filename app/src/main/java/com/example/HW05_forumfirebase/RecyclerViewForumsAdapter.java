@@ -29,13 +29,15 @@ import java.util.ArrayList;
 
 public class RecyclerViewForumsAdapter extends RecyclerView.Adapter<RecyclerViewForumsAdapter.PostsViewHolder>{
 
+    ForumsFragment forumsFragment;
     ArrayList<POJOclasses.Forum> forumsList;
     final String TAG = "Demo";
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public RecyclerViewForumsAdapter(ArrayList<POJOclasses.Forum> postsList) {
+    public RecyclerViewForumsAdapter(ArrayList<POJOclasses.Forum> postsList, ForumsFragment forumsFragment) {
         this.forumsList = postsList;
+        this.forumsFragment = forumsFragment;
     }
 
     @NonNull
@@ -108,6 +110,13 @@ public class RecyclerViewForumsAdapter extends RecyclerView.Adapter<RecyclerView
                     db.collection("forums").document(forum.docId)
                             .set(forum);
                 }
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                forumsFragment.openForumDetails(forum);
             }
         });
     }

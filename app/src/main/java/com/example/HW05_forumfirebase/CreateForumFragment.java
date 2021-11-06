@@ -30,6 +30,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 import java.util.Set;
 
 public class CreateForumFragment extends Fragment {
@@ -202,6 +203,128 @@ public class CreateForumFragment extends Fragment {
                         @NonNull
                         @Override
                         public List<String> subList(int i, int i1) {
+                            return null;
+                        }
+                    },
+                            new List<Map<String, String>>() {
+                        @Override
+                        public int size() {
+                            return 0;
+                        }
+
+                        @Override
+                        public boolean isEmpty() {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean contains(@Nullable Object o) {
+                            return false;
+                        }
+
+                        @NonNull
+                        @Override
+                        public Iterator<Map<String, String>> iterator() {
+                            return null;
+                        }
+
+                        @NonNull
+                        @Override
+                        public Object[] toArray() {
+                            return new Object[0];
+                        }
+
+                        @NonNull
+                        @Override
+                        public <T> T[] toArray(@NonNull T[] ts) {
+                            return null;
+                        }
+
+                        @Override
+                        public boolean add(Map<String, String> stringStringMap) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean remove(@Nullable Object o) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean containsAll(@NonNull Collection<?> collection) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean addAll(@NonNull Collection<? extends Map<String, String>> collection) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean addAll(int i, @NonNull Collection<? extends Map<String, String>> collection) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean removeAll(@NonNull Collection<?> collection) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean retainAll(@NonNull Collection<?> collection) {
+                            return false;
+                        }
+
+                        @Override
+                        public void clear() {
+
+                        }
+
+                        @Override
+                        public Map<String, String> get(int i) {
+                            return null;
+                        }
+
+                        @Override
+                        public Map<String, String> set(int i, Map<String, String> stringStringMap) {
+                            return null;
+                        }
+
+                        @Override
+                        public void add(int i, Map<String, String> stringStringMap) {
+
+                        }
+
+                        @Override
+                        public Map<String, String> remove(int i) {
+                            return null;
+                        }
+
+                        @Override
+                        public int indexOf(@Nullable Object o) {
+                            return 0;
+                        }
+
+                        @Override
+                        public int lastIndexOf(@Nullable Object o) {
+                            return 0;
+                        }
+
+                        @NonNull
+                        @Override
+                        public ListIterator<Map<String, String>> listIterator() {
+                            return null;
+                        }
+
+                        @NonNull
+                        @Override
+                        public ListIterator<Map<String, String>> listIterator(int i) {
+                            return null;
+                        }
+
+                        @NonNull
+                        @Override
+                        public List<Map<String, String>> subList(int i, int i1) {
                             return null;
                         }
                     });
