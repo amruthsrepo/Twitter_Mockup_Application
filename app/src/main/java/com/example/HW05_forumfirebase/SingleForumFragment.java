@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,8 @@ public class SingleForumFragment extends Fragment {
     POJOclasses.Forum forum;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    LinearLayoutManager layoutManager;
+    RecyclerViewCommentAdapter adapter;
 
     public SingleForumFragment(POJOclasses.Forum forum) {
         // Required empty public constructor
@@ -42,6 +45,9 @@ public class SingleForumFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentSingleForumBinding.inflate(inflater, container, false);
+
+        layoutManager = new LinearLayoutManager(getContext());
+        adapter = new RecyclerViewCommentAdapter(forum);
 
         binding.textViewFourmTitleSinglrForumFragment.setText(forum.title);
         binding.textViewForumContentCreatorSingleForumFragment.setText(forum.userName);
@@ -75,6 +81,10 @@ public class SingleForumFragment extends Fragment {
                 }
             }
         });
+
+        binding.recyclerViewCommentList.setHasFixedSize(true);
+        binding.recyclerViewCommentList.setLayoutManager(layoutManager);
+        binding.recyclerViewCommentList.setAdapter(adapter);
 
         return binding.getRoot();
     }
