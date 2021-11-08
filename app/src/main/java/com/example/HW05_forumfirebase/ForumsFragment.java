@@ -117,6 +117,7 @@ public class ForumsFragment extends Fragment {
     public void openForumDetails(POJOclasses.Forum forum) {
         getParentFragmentManager().beginTransaction()
                 .replace(R.id.main_ContainerView, new SingleForumFragment(forum))
+                .addToBackStack(null)
                 .commit();
     }
 

@@ -73,7 +73,7 @@ public class SingleForumFragment extends Fragment {
                     Map<String, String> newComment = new HashMap<>();
                     newComment.put("userName", mAuth.getCurrentUser().getDisplayName());
                     newComment.put("content", commentText);
-                    newComment.put("time", new SimpleDateFormat("MM/dd/yyyy hh:mmaa").format(new Date()));
+                    newComment.put("time", new SimpleDateFormat("MM/dd/yyyy hh:mm aa").format(new Date()));
                     newComment.put("Uid", mAuth.getUid());
                     forum.getComments().add(newComment);
                     db.collection("forums").document(forum.docId)
