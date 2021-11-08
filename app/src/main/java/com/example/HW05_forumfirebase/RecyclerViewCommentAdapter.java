@@ -1,3 +1,8 @@
+/*HW 05
+        Grouping3 - 18
+        Name: Rahul Govindkumar
+        Name: Amruth Nag
+        */
 package com.example.HW05_forumfirebase;
 
 import android.view.LayoutInflater;
@@ -20,9 +25,11 @@ public class RecyclerViewCommentAdapter extends RecyclerView.Adapter<RecyclerVie
     POJOclasses.Forum forum;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    SingleForumFragment parentView;
 
-    public RecyclerViewCommentAdapter(POJOclasses.Forum forum) {
+    public RecyclerViewCommentAdapter(POJOclasses.Forum forum, SingleForumFragment parentView) {
         this.forum = forum;
+        this.parentView = parentView;
     }
 
     @NonNull
@@ -44,13 +51,20 @@ public class RecyclerViewCommentAdapter extends RecyclerView.Adapter<RecyclerVie
 
         if (comment.get("Uid").equals(mAuth.getUid())) {
             RecyclerViewCommentAdapter r = this;
+
             holder.deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     forum.getComments().remove(commentPosition);
                     db.collection("forums").document(forum.docId)
                             .set(forum);
+
                     r.notifyDataSetChanged();
+                    parentView.binding.textViewCommentsCountSingleFourmFragment.setText(forum.getComments().size() + " Comments");
+
+
+
+
                 }
             });
         } else {
@@ -72,6 +86,7 @@ public class RecyclerViewCommentAdapter extends RecyclerView.Adapter<RecyclerVie
             commentText = itemView.findViewById(R.id.textView_SingleComment_Comment_Fourm);
             timeStamp = itemView.findViewById(R.id.textView_SingleComment_CommentDate);
             deleteButton = itemView.findViewById(R.id.imageButton_SingleComment_DeleteComment);
+
         }
     }
 }

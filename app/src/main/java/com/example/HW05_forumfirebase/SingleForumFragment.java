@@ -1,3 +1,9 @@
+/*HW 05
+        Grouping3 - 18
+        Name: Rahul Govindkumar
+        Name: Amruth Nag
+        */
+
 package com.example.HW05_forumfirebase;
 
 import android.annotation.SuppressLint;
@@ -6,6 +12,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -47,7 +54,9 @@ public class SingleForumFragment extends Fragment {
         binding = FragmentSingleForumBinding.inflate(inflater, container, false);
 
         layoutManager = new LinearLayoutManager(getContext());
-        adapter = new RecyclerViewCommentAdapter(forum);
+        adapter = new RecyclerViewCommentAdapter(forum,this);
+
+
 
         binding.textViewFourmTitleSinglrForumFragment.setText(forum.title);
         binding.textViewForumContentCreatorSingleForumFragment.setText(forum.userName);
@@ -78,13 +87,20 @@ public class SingleForumFragment extends Fragment {
                     forum.getComments().add(newComment);
                     db.collection("forums").document(forum.docId)
                             .set(forum);
+                    binding.editTextNewCommentSingleForumFragment.setText("");
+                    binding.textViewCommentsCountSingleFourmFragment.setText(forum.getComments().size() + " Comments");
+                    adapter.notifyDataSetChanged();
                 }
             }
         });
 
         binding.recyclerViewCommentList.setHasFixedSize(true);
+        binding.recyclerViewCommentList.addItemDecoration(new DividerItemDecoration(binding.recyclerViewCommentList.getContext(), DividerItemDecoration.VERTICAL));
+
         binding.recyclerViewCommentList.setLayoutManager(layoutManager);
         binding.recyclerViewCommentList.setAdapter(adapter);
+
+
 
         return binding.getRoot();
     }

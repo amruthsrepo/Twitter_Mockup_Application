@@ -1,4 +1,4 @@
-/*InClass 08
+/*HW 05
         Grouping3 - 18
         Name: Rahul Govindkumar
         Name: Amruth Nag
@@ -39,7 +39,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void updateUser(FirebaseUser u) {
-        this.user = u;
-    }
+
 }

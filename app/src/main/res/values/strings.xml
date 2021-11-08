@@ -21,5 +21,8 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="create_new_account">Create New Account</string>
+    <string name="new_forum">New Forum</string>
+    <string name="write_comment">Write Comment</string>
+    <string name="post">Post</string>
 
 </resources>
