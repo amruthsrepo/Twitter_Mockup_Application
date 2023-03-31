@@ -1,11 +1,15 @@
 # Twitter mockup android application
 
-This is an app built to mimic some basic functionalities of a twitter app. When this application was presented, users felt nostalgic about how simple twitter used to be.
+This is an Android application that provides users with a simple interface to mimic some of the basic functionalities of Twitter. The reduced function set makes it very easy for a new user to understand the working and start using the app.
 
 
 # Functionalities
 
-The reduced function set makes it very easy for a new user to understand the working and start using the app.
+The application includes the following features:
+
+* User authentication and registration with complete error handling logic
+* Ability to create a new forum and view other users' forums
+* Ability to like and comment on forums
 
 ## Login and Registration
 
